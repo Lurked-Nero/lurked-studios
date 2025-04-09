@@ -49,7 +49,9 @@ export default function Home() {
       </section>
 
       <section className="py-20 px-4">
-        <h2 className="text-3xl font-semibold text-center mb-10">Featured Products</h2>
+        <h2 className="text-3xl font-semibold text-center mb-10">
+          <span>Featured Products</span>
+        </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {[...Array(6)].map((_, i) => (
             <motion.div
@@ -72,8 +74,12 @@ export default function Home() {
       </section>
 
       <footer className="bg-black border-t border-gray-700 py-10 text-center text-sm text-gray-500">
-        <p><span>Follow us on Instagram @lurkedstudios</span></p>
-        <p><span>Contact: hello@lurkedstudios.com</span></p>
+        <p>
+          <span>Follow us on Instagram @lurkedstudios</span>
+        </p>
+        <p>
+          <span>Contact: hello@lurkedstudios.com</span>
+        </p>
       </footer>
     </main>
   );
