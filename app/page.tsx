@@ -1,4 +1,3 @@
-
 'use client';
 import { motion } from 'framer-motion';
 
@@ -12,7 +11,7 @@ export default function Home() {
           transition={{ duration: 1 }}
           className="text-5xl md:text-7xl font-bold"
         >
-          Lurked Studios
+          <span>Lurked Studios</span>
         </motion.h1>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
@@ -20,7 +19,7 @@ export default function Home() {
           transition={{ duration: 1, delay: 0.5 }}
           className="mt-4 text-xl md:text-2xl text-gray-400"
         >
-          Redefining Modern Streetwear
+          <span>Redefining Modern Streetwear</span>
         </motion.p>
       </section>
 
@@ -32,7 +31,7 @@ export default function Home() {
           viewport={{ once: true }}
           className="text-3xl font-semibold mb-4"
         >
-          About Us
+          <span>About Us</span>
         </motion.h2>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
@@ -41,7 +40,11 @@ export default function Home() {
           viewport={{ once: true }}
           className="text-gray-400"
         >
-          Lurked Studios is a contemporary streetwear label crafting fashion and lifestyle items with a refined urban edge. Our philosophy is rooted in minimalism, quality, and the rhythm of the streets.
+          <span>
+            Lurked Studios is a contemporary streetwear label crafting fashion and lifestyle items
+            with a refined urban edge. Our philosophy is rooted in minimalism, quality, and the
+            rhythm of the streets.
+          </span>
         </motion.p>
       </section>
 
@@ -51,6 +54,10 @@ export default function Home() {
           {[...Array(6)].map((_, i) => (
             <motion.div
               key={i}
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4 }}
+              viewport={{ once: true }}
               whileHover={{ scale: 1.05 }}
               className="bg-white text-black rounded-xl overflow-hidden shadow-lg"
             >
@@ -65,8 +72,8 @@ export default function Home() {
       </section>
 
       <footer className="bg-black border-t border-gray-700 py-10 text-center text-sm text-gray-500">
-        <p>Follow us on Instagram @lurkedstudios</p>
-        <p>Contact: hello@lurkedstudios.com</p>
+        <p><span>Follow us on Instagram @lurkedstudios</span></p>
+        <p><span>Contact: hello@lurkedstudios.com</span></p>
       </footer>
     </main>
   );
