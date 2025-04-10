@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import type { HTMLMotionProps } from 'framer-motion';
 import { forwardRef } from 'react';
 
-// ✅ 正確定義支援 className 的 motion component
+// 重新定義 Motion 元件，確保兼容所有必要屬性
 const MotionDiv = forwardRef<HTMLDivElement, HTMLMotionProps<'div'>>((props, ref) => (
   <motion.div ref={ref} {...props} />
 ));
