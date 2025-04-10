@@ -1,30 +1,14 @@
 'use client';
-import { motion } from 'framer-motion';
-import React, { forwardRef, ComponentPropsWithoutRef } from 'react';
+import { motion, MotionProps } from 'framer-motion';
+import React from 'react';
 
-// 直接使用 motion.div 來建立 MotionDiv
-const MotionDiv = motion.div;
+// 利用 React.JSX.IntrinsicElements 取代 JSX.IntrinsicElements
+type HTMLMotionProps<T extends keyof React.JSX.IntrinsicElements> = React.JSX.IntrinsicElements[T] & MotionProps;
 
-// 利用 motion(自訂元件)包覆 forwardRef 回傳的標準 h1 元件
-const MotionH1 = motion(
-  forwardRef<HTMLHeadingElement, ComponentPropsWithoutRef<'h1'>>((props, ref) => (
-    <h1 ref={ref} {...props} />
-  ))
-);
-
-// 同理建立 MotionH2
-const MotionH2 = motion(
-  forwardRef<HTMLHeadingElement, ComponentPropsWithoutRef<'h2'>>((props, ref) => (
-    <h2 ref={ref} {...props} />
-  ))
-);
-
-// 同理建立 MotionP
-const MotionP = motion(
-  forwardRef<HTMLParagraphElement, ComponentPropsWithoutRef<'p'>>((props, ref) => (
-    <p ref={ref} {...props} />
-  ))
-);
+const MotionH1: React.FC<HTMLMotionProps<'h1'>> = motion.h1;
+const MotionH2: React.FC<HTMLMotionProps<'h2'>> = motion.h2;
+const MotionP: React.FC<HTMLMotionProps<'p'>> = motion.p;
+const MotionDiv: React.FC<HTMLMotionProps<'div'>> = motion.div;
 
 export default function Home() {
   return (
@@ -35,7 +19,7 @@ export default function Home() {
           className="text-5xl md:text-7xl font-bold leading-tight"
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: "easeOut" }}
+          transition={{ duration: 1, ease: 'easeOut' }}
         >
           Lurked Studios
         </MotionH1>
@@ -44,7 +28,7 @@ export default function Home() {
           className="mt-4 text-xl md:text-2xl text-gray-400 max-w-xl"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
+          transition={{ duration: 1, delay: 0.5, ease: 'easeOut' }}
         >
           Redefining Modern Streetwear
         </MotionP>
@@ -56,7 +40,7 @@ export default function Home() {
           className="text-3xl font-semibold mb-6"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
+          transition={{ duration: 0.6, ease: 'easeOut' }}
           viewport={{ once: true, amount: 0.4 }}
         >
           About Us
@@ -66,12 +50,12 @@ export default function Home() {
           className="text-gray-400 leading-relaxed"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+          transition={{ duration: 0.6, delay: 0.2, ease: 'easeOut' }}
           viewport={{ once: true, amount: 0.4 }}
         >
-          Lurked Studios is a contemporary streetwear label crafting fashion and lifestyle
-          items with a refined urban edge. Our philosophy is rooted in minimalism, quality, and
-          the rhythm of the streets.
+          Lurked Studios is a contemporary streetwear label crafting fashion and lifestyle items
+          with a refined urban edge. Our philosophy is rooted in minimalism, quality, and the
+          rhythm of the streets.
         </MotionP>
       </section>
 
@@ -81,7 +65,7 @@ export default function Home() {
           className="text-3xl font-semibold text-center mb-12"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
+          transition={{ duration: 0.6, ease: 'easeOut' }}
           viewport={{ once: true, amount: 0.4 }}
         >
           Featured Products
@@ -93,7 +77,7 @@ export default function Home() {
               className="bg-white text-black rounded-2xl overflow-hidden shadow-lg"
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: i * 0.1, ease: "easeOut" }}
+              transition={{ duration: 0.5, delay: i * 0.1, ease: 'easeOut' }}
               viewport={{ once: true }}
               whileHover={{ scale: 1.04 }}
             >
