@@ -24,13 +24,13 @@ export default function Home() {
       >
         {/* LOGO 圖 */}
         <motion.div
-          className="w-64 md:w-72"
+          className="w-80 md:w-[28rem]"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1.5 }}
         >
           <img
-            src="/LOGO-WhiteMoonV3.png"
+            src="/LOGO-WhiteArrowV1.png"
             alt="Lurked Studios Logo"
             className="w-full h-auto object-contain"
           />
@@ -51,10 +51,10 @@ export default function Home() {
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 2, ease: "easeOut" }}
-        className="absolute top-8 right-8 w-28 h-28 md:w-36 md:h-36"
+        className="absolute top-8 right-8 w-24 h-24 md:w-32 md:h-32"
       >
         <img
-          src="/LOGO-WhiteArrowV1.png"
+          src="/LOGO-WhiteMoonV3.png"
           alt="Lurked Symbol"
           className="w-full h-full object-contain"
         />
@@ -64,4 +64,4 @@ export default function Home() {
 }
 
 // force redeploy
-// version updated 2025-04-12 04:28
+// version updated 2025-04-12 04:51
