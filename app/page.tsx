@@ -16,20 +16,6 @@ export default function Home() {
 
   return (
     <main className="flex flex-col items-center justify-center min-h-screen bg-black text-white overflow-hidden relative">
-      {/* L 彎月品牌象徵動畫 */}
-      <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 2, ease: "easeOut" }}
-        className="absolute top-8 right-8 w-24 h-24 md:w-32 md:h-32"
-      >
-        <img
-          src="/LOGO-WhiteArrow.png"
-          alt="Lurked Symbol"
-          className="w-full h-full object-contain"
-        />
-      </motion.div>
-
       {/* LOGO + 標語區塊 */}
       <motion.div
         className="flex flex-col items-center text-center"
@@ -44,7 +30,7 @@ export default function Home() {
           transition={{ duration: 1.5 }}
         >
           <img
-            src="/LOGO-WhiteMoonV2.png"
+            src="/LOGO-WhiteMoonV3.png"
             alt="Lurked Studios Logo"
             className="w-full h-auto object-contain"
           />
@@ -59,8 +45,23 @@ export default function Home() {
           What you seek is hidden.
         </motion.p>
       </motion.div>
+
+      {/* L 彎月品牌象徵動畫 */}
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 2, ease: "easeOut" }}
+        className="absolute top-8 right-8 w-24 h-24 md:w-32 md:h-32"
+      >
+        <img
+          src="/LOGO-WhiteArrowV1.png"
+          alt="Lurked Symbol"
+          className="w-full h-full object-contain"
+        />
+      </motion.div>
     </main>
   );
 }
+
 // force redeploy
 // version updated 2025-04-12 03:49
