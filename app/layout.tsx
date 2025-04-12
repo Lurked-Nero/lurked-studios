@@ -2,8 +2,11 @@
 import "../styles/globals.css";
 
 export const metadata = {
-  title: "Lurked Studios",
-  description: "Redefining Modern Streetwear",
+  title: 'Lurked Studios',
+  description: 'What you seek is hidden.',
+  icons: {
+    icon: '/favicon.ico',
+  },
 };
 
 export default function RootLayout({ children }) {
