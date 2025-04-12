@@ -1,22 +1,48 @@
-// app/page.tsx (Next.js 14 App Router)
-
 'use client';
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 
 export default function Home() {
   const [isMounted, setIsMounted] = useState(false);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
     setIsMounted(true);
+
+    // 自動播放音樂（部分瀏覽器需用戶互動才能自動播放）
+    const playAudio = () => {
+      if (audioRef.current) {
+        audioRef.current.volume = 0.5; // 設定音量（可調整）
+        audioRef.current.play().catch((e) => {
+          console.warn("Autoplay prevented:", e);
+        });
+      }
+    };
+
+    // 嘗試播放（有些瀏覽器會攔截自動播放）
+    playAudio();
+
+    // 可選：點擊任何地方播放（應對瀏覽器限制）
+    const onUserInteraction = () => {
+      playAudio();
+      window.removeEventListener("click", onUserInteraction);
+    };
+    window.addEventListener("click", onUserInteraction);
+
+    return () => {
+      window.removeEventListener("click", onUserInteraction);
+    };
   }, []);
 
   if (!isMounted) return null;
 
   return (
     <main className="flex flex-col items-center justify-center min-h-screen bg-black text-white overflow-hidden relative">
-      {/* L 彎月品牌象徵動畫 */}
+      {/* 音樂播放器（隱藏） */}
+      <audio ref={audioRef} src="/cinematic-bgm.mp3" loop hidden />
+
+      {/* 彎月品牌象徵動畫 */}
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
@@ -62,7 +88,3 @@ export default function Home() {
     </main>
   );
 }
-
-// force redeploy
-// version restored to initial layout
-// v0428 revert
