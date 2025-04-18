@@ -24,7 +24,7 @@ export default function Home() {
         className="absolute top-8 right-8 w-24 h-24 md:w-32 md:h-32"
       >
         <img
-          src="/LOGO-WhiteMoonV4"
+          src="/LOGO-WhiteMoonV4.png"
           alt="Lurked Symbol"
           className="w-full h-full object-contain"
         />
