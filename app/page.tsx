@@ -24,7 +24,7 @@ export default function Home() {
         className="absolute top-8 right-8 w-24 h-24 md:w-32 md:h-32"
       >
         <img
-          src="/LOGO-WhiteMoonV6.png"
+          src="/LOGO-WhiteMoonV7.png"
           alt="Lurked Symbol"
           className="w-full h-full object-contain"
         />
@@ -44,7 +44,7 @@ export default function Home() {
           transition={{ duration: 1.5 }}
         >
           <img
-            src="/LOGO-WhiteArrowV2.png"
+            src="/LOGO-WhiteArrowV3.png"
             alt="Lurked Studios Logo"
             className="w-full h-auto object-contain"
           />
