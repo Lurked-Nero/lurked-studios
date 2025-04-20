@@ -44,7 +44,7 @@ export default function Home() {
           transition={{ duration: 1.5 }}
         >
           <img
-            src="/LOGO-WhiteArrowV3.png"
+            src="/LOGO-WhiteArrowV4.svg"
             alt="Lurked Studios Logo"
             className="w-full h-auto object-contain"
           />
