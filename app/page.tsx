@@ -2,9 +2,10 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import type { HTMLMotionProps } from "framer-motion";
 
-// 解決 motion.img 的 TypeScript 型別錯誤
-const MotionImg = motion.img;
+// 👇 解決 motion.img src/alt 屬性問題
+const MotionImg = motion<HTMLImageElement>("img");
 
 export default function Home() {
   const [isMounted, setIsMounted] = useState(false);
@@ -19,7 +20,7 @@ export default function Home() {
           ? "/LOGO-YellowMoonV8.png"
           : "/LOGO-WhiteMoonV8.png"
       );
-    }, 6000); // 每 6 秒切換一次
+    }, 6000);
 
     return () => clearInterval(interval);
   }, []);
@@ -31,7 +32,7 @@ export default function Home() {
 
   return (
     <main className="flex flex-col items-center justify-center min-h-screen bg-black text-white overflow-hidden relative">
-      {/* 彎月 LOGO動畫區：初始進場 + 淡入淡出切換 */}
+      {/* 彎月 LOGO切換 */}
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
@@ -54,13 +55,12 @@ export default function Home() {
         />
       </motion.div>
 
-      {/* LOGO + 標語區塊 */}
+      {/* 中央箭頭 LOGO 切換 */}
       <motion.div
         className="flex flex-col items-center text-center"
         animate={{ opacity: [0.4, 1, 0.4] }}
         transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
       >
-        {/* 中央箭頭 LOGO：白箭 / 黃箭 切換 */}
         <motion.div
           className="relative w-[80vw] max-w-4xl"
           initial={{ opacity: 0 }}
