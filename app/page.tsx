@@ -1,5 +1,3 @@
-// app/page.tsx (Next.js 14 App Router)
-
 'use client';
 
 import { useState, useEffect } from "react";
@@ -7,26 +5,49 @@ import { motion } from "framer-motion";
 
 export default function Home() {
   const [isMounted, setIsMounted] = useState(false);
+  const [logoSrc, setLogoSrc] = useState("/LOGO-WhiteMoonV8.png");
 
   useEffect(() => {
     setIsMounted(true);
+
+    const interval = setInterval(() => {
+      setLogoSrc(prev =>
+        prev === "/LOGO-WhiteMoonV8.png"
+          ? "/LOGO-YellowMoonV8.png"
+          : "/LOGO-WhiteMoonV8.png"
+      );
+    }, 6000); // 每 6 秒切換一次
+
+    return () => clearInterval(interval);
   }, []);
 
   if (!isMounted) return null;
 
+  const isWhite = logoSrc === "/LOGO-WhiteMoonV8.png";
+  const moonTransition = { duration: 1.2, ease: "easeInOut" };
+
   return (
     <main className="flex flex-col items-center justify-center min-h-screen bg-black text-white overflow-hidden relative">
-      {/* L 彎月品牌象徵動畫 */}
+      {/* 彎月 LOGO動畫區：初始進場 + 淡入淡出切換 */}
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 2, ease: "easeOut" }}
+        transition={moonTransition}
         className="absolute top-8 right-8 w-24 h-24 md:w-32 md:h-32"
       >
-        <img
-          src="/LOGO-WhiteMoonV7.png"
-          alt="Lurked Symbol"
-          className="w-full h-full object-contain"
+        <motion.img
+          src="/LOGO-WhiteMoonV8.png"
+          alt="White Moon"
+          className="absolute w-full h-full object-contain"
+          animate={{ opacity: isWhite ? 1 : 0 }}
+          transition={moonTransition}
+        />
+        <motion.img
+          src="/LOGO-YellowMoonV8.png"
+          alt="Yellow Moon"
+          className="absolute w-full h-full object-contain"
+          animate={{ opacity: isWhite ? 0 : 1 }}
+          transition={moonTransition}
         />
       </motion.div>
 
@@ -36,17 +57,26 @@ export default function Home() {
         animate={{ opacity: [0.4, 1, 0.4] }}
         transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
       >
-        {/* LOGO 圖 */}
+        {/* 中央 LOGO 圖：白箭 / 黃箭 切換 */}
         <motion.div
-          className="w-[80vw] max-w-4xl"
+          className="relative w-[80vw] max-w-4xl"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1.5 }}
         >
-          <img
-            src="/LOGO-WhiteArrowV6.svg"
-            alt="Lurked Studios Logo"
-            className="w-full h-auto object-contain"
+          <motion.img
+            src="/LOGO-WhiteArrowV7.png"
+            alt="White Arrow Logo"
+            className="absolute top-0 left-0 w-full h-auto object-contain"
+            animate={{ opacity: isWhite ? 1 : 0 }}
+            transition={moonTransition}
+          />
+          <motion.img
+            src="/LOGO-YellowArrowV7.png"
+            alt="Yellow Arrow Logo"
+            className="absolute top-0 left-0 w-full h-auto object-contain"
+            animate={{ opacity: isWhite ? 0 : 1 }}
+            transition={moonTransition}
           />
         </motion.div>
 
@@ -62,7 +92,3 @@ export default function Home() {
     </main>
   );
 }
-
-// force redeploy
-// version restored to initial layout
-// v0428 revert
