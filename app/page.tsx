@@ -3,6 +3,9 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
+// 解決 motion.img 的 TypeScript 型別錯誤
+const MotionImg = motion.img;
+
 export default function Home() {
   const [isMounted, setIsMounted] = useState(false);
   const [logoSrc, setLogoSrc] = useState("/LOGO-WhiteMoonV8.png");
@@ -35,14 +38,14 @@ export default function Home() {
         transition={moonTransition}
         className="absolute top-8 right-8 w-24 h-24 md:w-32 md:h-32"
       >
-        <motion.img
+        <MotionImg
           src="/LOGO-WhiteMoonV8.png"
           alt="White Moon"
           className="absolute w-full h-full object-contain"
           animate={{ opacity: isWhite ? 1 : 0 }}
           transition={moonTransition}
         />
-        <motion.img
+        <MotionImg
           src="/LOGO-YellowMoonV8.png"
           alt="Yellow Moon"
           className="absolute w-full h-full object-contain"
@@ -57,21 +60,21 @@ export default function Home() {
         animate={{ opacity: [0.4, 1, 0.4] }}
         transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
       >
-        {/* 中央 LOGO 圖：白箭 / 黃箭 切換 */}
+        {/* 中央箭頭 LOGO：白箭 / 黃箭 切換 */}
         <motion.div
           className="relative w-[80vw] max-w-4xl"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1.5 }}
         >
-          <motion.img
+          <MotionImg
             src="/LOGO-WhiteArrowV7.png"
             alt="White Arrow Logo"
             className="absolute top-0 left-0 w-full h-auto object-contain"
             animate={{ opacity: isWhite ? 1 : 0 }}
             transition={moonTransition}
           />
-          <motion.img
+          <MotionImg
             src="/LOGO-YellowArrowV7.png"
             alt="Yellow Arrow Logo"
             className="absolute top-0 left-0 w-full h-auto object-contain"
