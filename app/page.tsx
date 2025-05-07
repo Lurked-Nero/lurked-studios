@@ -43,14 +43,14 @@ export default function Home() {
         className="absolute top-8 right-8 w-24 h-24 md:w-32 md:h-32"
       >
         <MotionImg
-          src="/LOGO-WhiteMoonV8.png"
+          src="/LOGO-WhiteMoonV9.png"
           alt="White Moon"
           className="absolute w-full h-full object-contain"
           animate={{ opacity: isWhite ? 1 : 0 }}
           transition={moonTransition}
         />
         <MotionImg
-          src="/LOGO-YellowMoonV8.png"
+          src="/LOGO-YellowMoonV9.png"
           alt="Yellow Moon"
           className="absolute w-full h-full object-contain"
           animate={{ opacity: isWhite ? 0 : 1 }}
