@@ -19,9 +19,9 @@ export default function Home() {
 
     const interval = setInterval(() => {
       setLogoSrc(prev =>
-        prev === "/LOGO-WhiteMoonV8.png"
-          ? "/LOGO-YellowMoonV8.png"
-          : "/LOGO-WhiteMoonV8.png"
+        prev === "/LOGO-WhiteMoonV10.png"
+          ? "/LOGO-YellowMoonV10.png"
+          : "/LOGO-WhiteMoonV10.png"
       );
     }, 6000);
 
@@ -30,7 +30,7 @@ export default function Home() {
 
   if (!isMounted) return null;
 
-  const isWhite = logoSrc === "/LOGO-WhiteMoonV8.png";
+  const isWhite = logoSrc === "/LOGO-WhiteMoonV10.png";
   const moonTransition = { duration: 1.2, ease: "easeInOut" };
 
   return (
@@ -43,14 +43,14 @@ export default function Home() {
         className="absolute top-8 right-8 w-24 h-24 md:w-32 md:h-32"
       >
         <MotionImg
-          src="/LOGO-WhiteMoonV9.png"
+          src="/LOGO-WhiteMoonV10.png"
           alt="White Moon"
           className="absolute w-full h-full object-contain"
           animate={{ opacity: isWhite ? 1 : 0 }}
           transition={moonTransition}
         />
         <MotionImg
-          src="/LOGO-YellowMoonV9.png"
+          src="/LOGO-YellowMoonV10.png"
           alt="Yellow Moon"
           className="absolute w-full h-full object-contain"
           animate={{ opacity: isWhite ? 0 : 1 }}
