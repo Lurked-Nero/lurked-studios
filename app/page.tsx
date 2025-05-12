@@ -19,9 +19,9 @@ export default function Home() {
 
     const interval = setInterval(() => {
       setLogoSrc(prev =>
-        prev === "/LOGO-WhiteMoonV10.png"
+        prev === "/LOGO-WhiteMoonV11.png"
           ? "/LOGO-YellowMoonV10.png"
-          : "/LOGO-WhiteMoonV10.png"
+          : "/LOGO-WhiteMoonV11.png"
       );
     }, 6000);
 
@@ -30,7 +30,7 @@ export default function Home() {
 
   if (!isMounted) return null;
 
-  const isWhite = logoSrc === "/LOGO-WhiteMoonV10.png";
+  const isWhite = logoSrc === "/LOGO-WhiteMoonV11.png";
   const moonTransition = { duration: 1.2, ease: "easeInOut" };
 
   return (
