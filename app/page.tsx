@@ -72,14 +72,14 @@ export default function Home() {
         >
           {/* 重疊切換箭頭 LOGO 圖片 */}
           <MotionImg
-            src="/LOGO-WhiteArrowV8.png"
+            src="/LOGO-WhiteArrowV8.svg"
             alt="White Arrow Logo"
             className="absolute top-0 left-0 w-full h-[300px] object-contain"
             animate={{ opacity: isWhite ? 1 : 0 }}
             transition={moonTransition}
           />
           <MotionImg
-            src="/LOGO-YellowArrowV8.png"
+            src="/LOGO-YellowArrowV8.svg"
             alt="Yellow Arrow Logo"
             className="absolute top-0 left-0 w-full h-[300px] object-contain"
             animate={{ opacity: isWhite ? 0 : 1 }}
