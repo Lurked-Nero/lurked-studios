@@ -3,7 +3,6 @@
 import { useState, useEffect, forwardRef } from 'react';
 import { motion } from 'framer-motion';
 
-// ✅ MotionImg - 支援動畫的 <img>
 const MotionImg = motion(
   forwardRef<HTMLImageElement, React.ImgHTMLAttributes<HTMLImageElement>>(
     (props, ref) => <img ref={ref} {...props} />
@@ -26,14 +25,13 @@ export default function Home() {
     return () => clearInterval(interval);
   }, []);
 
-  if (!isMounted) return null;
-
   const isWhite = logoSrc === "/LOGO-WhiteMoonV12.png";
   const moonTransition = { duration: 1.2, ease: "easeInOut" };
 
+  if (!isMounted) return null;
+
   return (
     <main className="flex flex-col items-center justify-center min-h-screen bg-black text-white overflow-hidden relative">
-      {/* 彎月 LOGO（右上角） */}
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
@@ -56,7 +54,6 @@ export default function Home() {
         />
       </motion.div>
 
-      {/* 中央 LOGO 與標語 */}
       <motion.div
         className="flex flex-col items-center text-center"
         animate={{ opacity: [0.4, 1, 0.4] }}
