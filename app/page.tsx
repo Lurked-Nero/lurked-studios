@@ -3,7 +3,7 @@
 import { useState, useEffect, forwardRef } from 'react';
 import { motion } from 'framer-motion';
 
-// ✅ 定義 MotionImg，正確支援 <img> 屬性 + 動畫
+// ✅ 定義 MotionImg，支援動畫的 <img>
 const MotionImg = motion(
   forwardRef<HTMLImageElement, React.ImgHTMLAttributes<HTMLImageElement>>(
     (props, ref) => <img ref={ref} {...props} />
@@ -16,7 +16,6 @@ export default function Home() {
 
   useEffect(() => {
     setIsMounted(true);
-
     const interval = setInterval(() => {
       setLogoSrc(prev =>
         prev === "/LOGO-WhiteMoonV12.png"
@@ -24,7 +23,6 @@ export default function Home() {
           : "/LOGO-WhiteMoonV12.png"
       );
     }, 6000);
-
     return () => clearInterval(interval);
   }, []);
 
@@ -35,7 +33,7 @@ export default function Home() {
 
   return (
     <main className="flex flex-col items-center justify-center min-h-screen bg-black text-white overflow-hidden relative">
-      {/* 彎月 LOGO切換動畫（右上角） */}
+      {/* 右上角彎月 LOGO 切換動畫 */}
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
@@ -58,7 +56,7 @@ export default function Home() {
         />
       </motion.div>
 
-      {/* 中央箭頭 LOGO + 品牌標語 */}
+      {/* 中央箭頭 LOGO 與品牌標語 */}
       <motion.div
         className="flex flex-col items-center text-center"
         animate={{ opacity: [0.4, 1, 0.4] }}
@@ -70,25 +68,25 @@ export default function Home() {
           animate={{ opacity: 1 }}
           transition={{ duration: 1.5 }}
         >
-          {/* 重疊切換箭頭 LOGO 圖片 */}
-         <div className="relative w-full h-[300px]"></div>
-          <MotionImg
-            src="/LOGO-WhiteArrowV8.svg"
-            alt="White Arrow Logo"
-            className="absolute top-0 left-0 w-full h-full scale-[3] object-contain"
-            animate={{ opacity: isWhite ? 1 : 0 }}
-            transition={moonTransition}
-          />
-          <MotionImg
-            src="/LOGO-YellowArrowV8.svg"
-            alt="Yellow Arrow Logo"
-            className="absolute top-0 left-0 w-full h-full scale-[3] object-contain"
-            animate={{ opacity: isWhite ? 0 : 1 }}
-            transition={moonTransition}
-          />
-        </div>
+          {/* LOGO 圖片區塊 */}
+          <div className="relative w-full h-[300px]">
+            <MotionImg
+              src="/LOGO-WhiteArrowV8.svg"
+              alt="White Arrow Logo"
+              className="absolute top-0 left-0 w-full h-full object-contain scale-[3] origin-center"
+              animate={{ opacity: isWhite ? 1 : 0 }}
+              transition={moonTransition}
+            />
+            <MotionImg
+              src="/LOGO-YellowArrowV8.svg"
+              alt="Yellow Arrow Logo"
+              className="absolute top-0 left-0 w-full h-full object-contain scale-[3] origin-center"
+              animate={{ opacity: isWhite ? 0 : 1 }}
+              transition={moonTransition}
+            />
+          </div>
 
-          {/* 品牌標語文字，穩定置於 LOGO 下緣 */}
+          {/* 品牌標語 */}
           <motion.p
             className="mt-4 text-lg md:text-xl tracking-widest font-light text-center"
             animate={{ opacity: [0.4, 1, 0.4] }}
