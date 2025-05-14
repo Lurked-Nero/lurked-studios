@@ -3,7 +3,7 @@
 import { useState, useEffect, forwardRef } from 'react';
 import { motion } from 'framer-motion';
 
-// ✅ 支援動畫的 <img>
+// ✅ MotionImg - 支援動畫的 <img>
 const MotionImg = motion(
   forwardRef<HTMLImageElement, React.ImgHTMLAttributes<HTMLImageElement>>(
     (props, ref) => <img ref={ref} {...props} />
