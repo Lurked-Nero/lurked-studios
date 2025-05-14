@@ -74,14 +74,14 @@ export default function Home() {
           <MotionImg
             src="/LOGO-WhiteArrowV8.svg"
             alt="White Arrow Logo"
-            className="absolute top-0 left-0 w-full h-[300px] object-contain"
+            className="absolute top-0 left-0 w-full h-[300px] scale-[3] object-contain"
             animate={{ opacity: isWhite ? 1 : 0 }}
             transition={moonTransition}
           />
           <MotionImg
             src="/LOGO-YellowArrowV8.svg"
             alt="Yellow Arrow Logo"
-            className="absolute top-0 left-0 w-full h-[300px] object-contain"
+            className="absolute top-0 left-0 w-full h-[300px] scale-[3] object-contain"
             animate={{ opacity: isWhite ? 0 : 1 }}
             transition={moonTransition}
           />
