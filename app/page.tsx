@@ -71,24 +71,26 @@ export default function Home() {
           transition={{ duration: 1.5 }}
         >
           {/* 重疊切換箭頭 LOGO 圖片 */}
+         <div className="relative w-full h-[300px]"></div>
           <MotionImg
             src="/LOGO-WhiteArrowV8.svg"
             alt="White Arrow Logo"
-            className="absolute top-0 left-0 w-full h-[300px] scale-[3] object-contain"
+            className="absolute top-0 left-0 w-full h-full scale-[3] object-contain"
             animate={{ opacity: isWhite ? 1 : 0 }}
             transition={moonTransition}
           />
           <MotionImg
             src="/LOGO-YellowArrowV8.svg"
             alt="Yellow Arrow Logo"
-            className="absolute top-0 left-0 w-full h-[300px] scale-[3] object-contain"
+            className="absolute top-0 left-0 w-full h-full scale-[3] object-contain"
             animate={{ opacity: isWhite ? 0 : 1 }}
             transition={moonTransition}
           />
+        </div>
 
           {/* 品牌標語文字，穩定置於 LOGO 下緣 */}
           <motion.p
-            className="mt-[calc(300px+1rem)] text-lg md:text-xl tracking-widest font-light"
+            className="mt-4 text-lg md:text-xl tracking-widest font-light text-center"
             animate={{ opacity: [0.4, 1, 0.4] }}
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
           >
