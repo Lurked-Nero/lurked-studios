@@ -3,7 +3,7 @@
 import { useState, useEffect, forwardRef } from 'react';
 import { motion } from 'framer-motion';
 
-// ✅ 支援動畫的 <img> 元件
+// ✅ 支援動畫的 <img>
 const MotionImg = motion(
   forwardRef<HTMLImageElement, React.ImgHTMLAttributes<HTMLImageElement>>(
     (props, ref) => <img ref={ref} {...props} />
@@ -16,7 +16,6 @@ export default function Home() {
 
   useEffect(() => {
     setIsMounted(true);
-
     const interval = setInterval(() => {
       setLogoSrc(prev =>
         prev === "/LOGO-WhiteMoonV12.png"
@@ -24,7 +23,6 @@ export default function Home() {
           : "/LOGO-WhiteMoonV12.png"
       );
     }, 6000);
-
     return () => clearInterval(interval);
   }, []);
 
@@ -35,7 +33,7 @@ export default function Home() {
 
   return (
     <main className="flex flex-col items-center justify-center min-h-screen bg-black text-white overflow-hidden relative">
-      {/* 右上角 彎月LOGO 切換動畫 */}
+      {/* 彎月 LOGO（右上角） */}
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
@@ -58,7 +56,7 @@ export default function Home() {
         />
       </motion.div>
 
-      {/* 中央箭頭LOGO + 品牌標語 */}
+      {/* 中央 LOGO 與標語 */}
       <motion.div
         className="flex flex-col items-center text-center"
         animate={{ opacity: [0.4, 1, 0.4] }}
@@ -70,7 +68,6 @@ export default function Home() {
           animate={{ opacity: 1 }}
           transition={{ duration: 1.5 }}
         >
-          {/* LOGO 圖片區塊 */}
           <div className="relative w-full h-[300px]">
             <MotionImg
               src="/LOGO-WhiteArrowV8.svg"
@@ -88,7 +85,6 @@ export default function Home() {
             />
           </div>
 
-          {/* 品牌標語文字 */}
           <motion.p
             className="mt-4 text-lg md:text-xl tracking-widest font-light text-center"
             animate={{ opacity: [0.4, 1, 0.4] }}
