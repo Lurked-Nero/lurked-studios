@@ -31,7 +31,8 @@ export default function Home() {
   if (!isMounted) return null;
 
   return (
-    <main className="flex flex-col items-center justify-center min-h-screen bg-black text-white overflow-hidden relative">
+    <main className="flex flex-col justify-between items-center min-h-screen bg-black text-white overflow-hidden relative">
+      {/* 右上角彎月 Logo */}
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
@@ -54,6 +55,7 @@ export default function Home() {
         />
       </motion.div>
 
+      {/* 中央箭頭 Logo */}
       <motion.div
         className="flex flex-col items-center text-center"
         animate={{ opacity: [0.4, 1, 0.4] }}
@@ -81,16 +83,17 @@ export default function Home() {
               transition={moonTransition}
             />
           </div>
-
-          <motion.p
-            className="mt-4 text-lg md:text-xl tracking-widest font-light text-center"
-            animate={{ opacity: [0.4, 1, 0.4] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-          >
-            What you seek is hidden.
-          </motion.p>
         </motion.div>
       </motion.div>
+
+      {/* ✅ 底部標語 */}
+      <motion.p
+        className="mb-8 text-lg md:text-xl tracking-widest font-light text-center"
+        animate={{ opacity: [0.4, 1, 0.4] }}
+        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+      >
+        What you seek is hidden.
+      </motion.p>
     </main>
   );
 }
