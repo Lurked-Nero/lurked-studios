@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, forwardRef } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const MotionImg = motion(
   forwardRef<HTMLImageElement, React.ImgHTMLAttributes<HTMLImageElement>>(
@@ -55,24 +55,30 @@ export default function Home() {
         />
       </motion.div>
 
-      {/* 箭頭區 + 標語，用 padding 模擬 scale 大小 */}
+      {/* 中央箭頭 Logo + 標語 */}
       <motion.div
-        className="flex flex-col items-center text-center mt-32 px-4"
+        className="flex flex-col items-center text-center mt-32 px-4 gap-4"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1.5 }}
       >
-        {/* 模擬 scale 導致的視覺佔位 */}
-        <div className="w-[80vw] max-w-4xl pb-[120px] relative">
-          <MotionImg
-            src={isWhite ? "/LOGO-WhiteArrowV8.svg" : "/LOGO-YellowArrowV8.svg"}
-            alt="Arrow Logo"
-            className="w-full h-[300px] object-contain md:scale-[3] origin-center"
-            key={logoSrc}
-          />
+        {/* ✅ AnimatePresence 控制圖片 fade in/out */}
+        <div className="w-[80vw] max-w-4xl h-[300px] relative overflow-hidden">
+          <AnimatePresence mode="wait">
+            <MotionImg
+              key={logoSrc}
+              src={isWhite ? "/LOGO-WhiteArrowV8.svg" : "/LOGO-YellowArrowV8.svg"}
+              alt="Arrow Logo"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 1.2 }}
+              className="w-full h-full object-contain scale-100 md:scale-[3] origin-center"
+            />
+          </AnimatePresence>
         </div>
 
-        {/* ✅ 實體上放在圖下方，但 scale 不會撞到它 */}
+        {/* ✅ 貼在圖底下，不再飄 */}
         <motion.p
           className="text-sm md:text-lg tracking-widest font-light mt-4"
           animate={{ opacity: [0.4, 1, 0.4] }}
