@@ -11,7 +11,7 @@ const MotionImg = motion(
 
 export default function Home() {
   const [isMounted, setIsMounted] = useState(false);
-  const [logoSrc, setLogoSrc] = useState("/LOGO-WhiteMoonV8.png");
+  const [logoSrc, setLogoSrc] = useState("/LOGO-WhiteMoonV12.png"); // ✅ 先設定成會顯示的一張
 
   useEffect(() => {
     setIsMounted(true);
@@ -55,7 +55,7 @@ export default function Home() {
         />
       </motion.div>
 
-      {/* 中央箭頭 Logo */}
+      {/* 中央箭頭 Logo（修正版本） */}
       <motion.div
         className="flex flex-col items-center text-center"
         animate={{ opacity: [0.4, 1, 0.4] }}
@@ -71,6 +71,7 @@ export default function Home() {
             src="/LOGO-WhiteArrowV8.svg"
             alt="White Arrow Logo"
             className="absolute top-0 left-0 w-full h-full object-contain"
+            initial={{ opacity: 1 }} // ✅ 初始直接顯示
             animate={{ opacity: isWhite ? 1 : 0 }}
             transition={moonTransition}
           />
@@ -78,13 +79,14 @@ export default function Home() {
             src="/LOGO-YellowArrowV8.svg"
             alt="Yellow Arrow Logo"
             className="absolute top-0 left-0 w-full h-full object-contain"
+            initial={{ opacity: 0 }} // ✅ 初始透明
             animate={{ opacity: isWhite ? 0 : 1 }}
             transition={moonTransition}
           />
         </motion.div>
       </motion.div>
 
-      {/* ✅ 底部標語 */}
+      {/* 底部標語 */}
       <motion.p
         className="mb-8 text-lg md:text-xl tracking-widest font-light text-center"
         animate={{ opacity: [0.4, 1, 0.4] }}
