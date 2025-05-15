@@ -55,26 +55,26 @@ export default function Home() {
         />
       </motion.div>
 
-      {/* 中央箭頭 + 正確貼底的標語 */}
+      {/* 箭頭區 + 標語，用 padding 模擬 scale 大小 */}
       <motion.div
-        className="flex flex-col items-center text-center mt-32 px-4 gap-4"
+        className="flex flex-col items-center text-center mt-32 px-4"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1.5 }}
       >
-        {/* 這裡不要再用 absolute，讓圖真正存在於排版流程中 */}
-        <div className="w-[80vw] max-w-4xl">
+        {/* 模擬 scale 導致的視覺佔位 */}
+        <div className="w-[80vw] max-w-4xl pb-[120px] relative">
           <MotionImg
             src={isWhite ? "/LOGO-WhiteArrowV8.svg" : "/LOGO-YellowArrowV8.svg"}
             alt="Arrow Logo"
-            className="w-full h-[300px] object-contain scale-100 md:scale-[3] origin-center transition-opacity duration-700"
+            className="w-full h-[300px] object-contain md:scale-[3] origin-center"
             key={logoSrc}
           />
         </div>
 
-        {/* ✅ 這樣才會確實在圖片下方 */}
+        {/* ✅ 實體上放在圖下方，但 scale 不會撞到它 */}
         <motion.p
-          className="text-sm md:text-lg tracking-widest font-light"
+          className="text-sm md:text-lg tracking-widest font-light mt-4"
           animate={{ opacity: [0.4, 1, 0.4] }}
           transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
         >
