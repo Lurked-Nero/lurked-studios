@@ -3,7 +3,7 @@
 import { useState, useEffect, forwardRef } from 'react';
 import { motion } from 'framer-motion';
 
-// motion img 包裝
+// ✅ 支援 <img> 屬性的 motion 元件
 const MotionImg = motion(
   forwardRef<HTMLImageElement, React.ImgHTMLAttributes<HTMLImageElement>>(
     (props, ref) => <img ref={ref} {...props} />
@@ -32,14 +32,13 @@ export default function Home() {
     repeat: Infinity,
     ease: 'easeInOut',
   };
-
   const staticHide = {
     opacity: 0,
   };
 
   return (
     <main className="flex flex-col items-center min-h-screen bg-black text-white overflow-hidden relative">
-      {/* ✅ 右上彎月：一開始浮現，切換 + 呼吸 */}
+      {/* ✅ 右上彎月：初始浮現 + 呼吸 + 切換 */}
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
@@ -62,9 +61,9 @@ export default function Home() {
         />
       </motion.div>
 
-      {/* ✅ 中央箭頭切換 + 呼吸 */}
+      {/* ✅ 中央箭頭區：responsive 尺寸 + 呼吸動畫 + 切換 */}
       <motion.div className="flex flex-col items-center text-center mt-32 px-4 gap-6">
-        <div className="w-[80vw] max-w-4xl h-[300px] relative">
+        <div className="w-[80vw] max-w-6xl h-[300px] md:h-[420px] lg:h-[500px] relative">
           <MotionImg
             src="/LOGO-WhiteArrowV8.svg"
             alt="White Arrow"
@@ -81,11 +80,11 @@ export default function Home() {
           />
         </div>
 
-        {/* ✅ 標語也呼吸 */}
+        {/* ✅ 標語文字：同步呼吸 */}
         <motion.p
           className="text-sm md:text-lg tracking-widest font-light text-center"
           animate={breathing}
-          transition={breathTransition}
+          transition={{ ...breathTransition, delay: 0.5 }}
         >
           What you seek is hidden.
         </motion.p>
