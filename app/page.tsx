@@ -44,31 +44,25 @@ export default function Home() {
         />
       </motion.div>
 
-      {/* 中央箭頭 + 標語 */}
+      {/* 中央箭頭 Logo + 文字，垂直排 */}
       <motion.div
         className="flex flex-col items-center text-center mt-32 px-4 gap-6"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1.5 }}
       >
-        {/* ⛔ 不用 absolute，不用 scale */}
-        {/* ✅ 兩張圖交錯顯示 + 真實佔位 */}
-        <div className="w-[80vw] max-w-4xl h-[300px] relative">
-          <motion.img
-            src="/LOGO-WhiteArrowV8.svg"
-            alt="White Arrow"
-            className="w-full h-full object-contain transition-opacity duration-700"
-            animate={{ opacity: isWhite ? 1 : 0 }}
-          />
-          <motion.img
-            src="/LOGO-YellowArrowV8.svg"
-            alt="Yellow Arrow"
-            className="w-full h-full object-contain absolute top-0 left-0 transition-opacity duration-700"
-            animate={{ opacity: isWhite ? 0 : 1 }}
-          />
-        </div>
+        {/* ✅ 單一圖，正常排版 */}
+        <motion.img
+          key={isWhite ? 'white' : 'yellow'}
+          src={isWhite ? '/LOGO-WhiteArrowV8.svg' : '/LOGO-YellowArrowV8.svg'}
+          alt="Arrow Logo"
+          className="w-[80vw] max-w-4xl h-[300px] object-contain transition-opacity duration-1000"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+        />
 
-        {/* ✅ 貼圖下方穩定顯示文字 */}
+        {/* ✅ 圖片下方的標語 */}
         <motion.p
           className="text-sm md:text-lg tracking-widest font-light text-center"
           animate={{ opacity: [0.4, 1, 0.4] }}
