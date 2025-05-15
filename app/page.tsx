@@ -55,44 +55,38 @@ export default function Home() {
         />
       </motion.div>
 
-      {/* 中央箭頭 Logo + 標語合併區塊 */}
+      {/* 中央箭頭 Logo + 標語區塊 */}
       <motion.div
-        className="flex flex-col items-center text-center"
-        animate={{ opacity: [0.4, 1, 0.4] }}
-        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+        className="flex flex-col items-center text-center gap-6"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.5 }}
       >
-        <motion.div
-          className="relative w-[80vw] max-w-4xl flex flex-col items-center"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1.5 }}
-        >
-          <div className="relative w-full h-[300px]">
-            <MotionImg
-              src="/LOGO-WhiteArrowV8.svg"
-              alt="White Arrow Logo"
-              className="absolute top-0 left-0 w-full h-full object-contain scale-100 md:scale-[3] origin-center"
-              animate={{ opacity: isWhite ? 1 : 0 }}
-              transition={moonTransition}
-            />
-            <MotionImg
-              src="/LOGO-YellowArrowV8.svg"
-              alt="Yellow Arrow Logo"
-              className="absolute top-0 left-0 w-full h-full object-contain scale-100 md:scale-[3] origin-center"
-              animate={{ opacity: isWhite ? 0 : 1 }}
-              transition={moonTransition}
-            />
-          </div>
+        <div className="relative w-[80vw] max-w-4xl h-[300px]">
+          <MotionImg
+            src="/LOGO-WhiteArrowV8.svg"
+            alt="White Arrow Logo"
+            className="absolute top-0 left-0 w-full h-full object-contain scale-100 md:scale-[3] origin-center"
+            animate={{ opacity: isWhite ? 1 : 0 }}
+            transition={moonTransition}
+          />
+          <MotionImg
+            src="/LOGO-YellowArrowV8.svg"
+            alt="Yellow Arrow Logo"
+            className="absolute top-0 left-0 w-full h-full object-contain scale-100 md:scale-[3] origin-center"
+            animate={{ opacity: isWhite ? 0 : 1 }}
+            transition={moonTransition}
+          />
+        </div>
 
-          {/* ✅ 標語放在中央箭頭 Logo 下方 */}
-          <motion.p
-            className="mt-6 text-lg md:text-xl tracking-widest font-light text-center"
-            animate={{ opacity: [0.4, 1, 0.4] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-          >
-            What you seek is hidden.
-          </motion.p>
-        </motion.div>
+        {/* 標語：貼近箭頭下方 */}
+        <motion.p
+          className="text-lg md:text-xl tracking-widest font-light text-center"
+          animate={{ opacity: [0.4, 1, 0.4] }}
+          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+        >
+          What you seek is hidden.
+        </motion.p>
       </motion.div>
     </main>
   );
