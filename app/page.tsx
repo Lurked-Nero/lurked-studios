@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, forwardRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 const MotionImg = motion(
   forwardRef<HTMLImageElement, React.ImgHTMLAttributes<HTMLImageElement>>(
@@ -12,7 +12,6 @@ const MotionImg = motion(
 export default function Home() {
   const [isMounted, setIsMounted] = useState(false);
   const [logoSrc, setLogoSrc] = useState("/LOGO-WhiteMoonV11.png");
-  const [arrowSrc, setArrowSrc] = useState("/LOGO-WhiteArrowV8.svg");
 
   useEffect(() => {
     setIsMounted(true);
@@ -21,11 +20,6 @@ export default function Home() {
         prev === "/LOGO-WhiteMoonV11.png"
           ? "/LOGO-YellowMoonV11.png"
           : "/LOGO-WhiteMoonV11.png"
-      );
-      setArrowSrc(prev =>
-        prev === "/LOGO-WhiteArrowV8.svg"
-          ? "/LOGO-YellowArrowV8.svg"
-          : "/LOGO-WhiteArrowV8.svg"
       );
     }, 6000);
     return () => clearInterval(interval);
@@ -68,21 +62,25 @@ export default function Home() {
         animate={{ opacity: 1 }}
         transition={{ duration: 1.5 }}
       >
-        <div className="w-[80vw] max-w-4xl h-[300px] relative overflow-hidden">
-          <AnimatePresence mode="wait">
-            <MotionImg
-              key={arrowSrc}
-              src={arrowSrc}
-              alt="Arrow Logo"
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 1.2 }}
-              className="w-full h-full object-contain scale-100 md:scale-[3] origin-center"
-            />
-          </AnimatePresence>
+        <div className="w-[80vw] max-w-4xl h-[300px] relative">
+          {/* 用交錯疊圖方式交替 opacity */}
+          <MotionImg
+            src="/LOGO-WhiteArrowV8.svg"
+            alt="White Arrow"
+            className="absolute w-full h-full object-contain scale-100 md:scale-[3] origin-center"
+            animate={{ opacity: isWhite ? 1 : 0 }}
+            transition={moonTransition}
+          />
+          <MotionImg
+            src="/LOGO-YellowArrowV8.svg"
+            alt="Yellow Arrow"
+            className="absolute w-full h-full object-contain scale-100 md:scale-[3] origin-center"
+            animate={{ opacity: isWhite ? 0 : 1 }}
+            transition={moonTransition}
+          />
         </div>
 
-        {/* ✅ 貼圖下方文字 */}
+        {/* 貼圖下方的標語 */}
         <motion.p
           className="text-sm md:text-lg tracking-widest font-light mt-4"
           animate={{ opacity: [0.4, 1, 0.4] }}
