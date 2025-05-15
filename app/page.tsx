@@ -55,7 +55,7 @@ export default function Home() {
         />
       </motion.div>
 
-      {/* 中央箭頭 Logo */}
+      {/* 中央箭頭 Logo（響應式 scale 控制） */}
       <motion.div
         className="flex flex-col items-center text-center"
         animate={{ opacity: [0.4, 1, 0.4] }}
@@ -71,14 +71,14 @@ export default function Home() {
             <MotionImg
               src="/LOGO-WhiteArrowV8.svg"
               alt="White Arrow Logo"
-              className="absolute top-0 left-0 w-full h-full object-contain scale-[3] origin-center"
+              className="absolute top-0 left-0 w-full h-full object-contain scale-100 md:scale-[3] origin-center"
               animate={{ opacity: isWhite ? 1 : 0 }}
               transition={moonTransition}
             />
             <MotionImg
               src="/LOGO-YellowArrowV8.svg"
               alt="Yellow Arrow Logo"
-              className="absolute top-0 left-0 w-full h-full object-contain scale-[3] origin-center"
+              className="absolute top-0 left-0 w-full h-full object-contain scale-100 md:scale-[3] origin-center"
               animate={{ opacity: isWhite ? 0 : 1 }}
               transition={moonTransition}
             />
