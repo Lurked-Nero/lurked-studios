@@ -3,7 +3,7 @@
 import { useState, useEffect, forwardRef } from 'react';
 import { motion } from 'framer-motion';
 
-// ✅ 支援 <img> 屬性的 motion 元件
+// ✅ 支援 <img> 的 motion 包裝
 const MotionImg = motion(
   forwardRef<HTMLImageElement, React.ImgHTMLAttributes<HTMLImageElement>>(
     (props, ref) => <img ref={ref} {...props} />
@@ -37,7 +37,7 @@ export default function Home() {
   };
 
   return (
-    <main className="flex flex-col items-center min-h-screen bg-black text-white overflow-hidden relative">
+    <main className="flex items-center justify-center min-h-screen bg-black text-white overflow-hidden relative">
       {/* ✅ 右上彎月：初始浮現 + 呼吸 + 切換 */}
       <motion.div
         initial={{ opacity: 0, y: 40 }}
@@ -61,8 +61,8 @@ export default function Home() {
         />
       </motion.div>
 
-      {/* ✅ 中央箭頭區：responsive 尺寸 + 呼吸動畫 + 切換 */}
-      <motion.div className="flex flex-col items-center text-center mt-32 px-4 gap-6">
+      {/* ✅ 中央箭頭區：切換 + 呼吸 + 響應式尺寸 */}
+      <motion.div className="flex flex-col items-center text-center px-4 gap-6">
         <div className="w-[80vw] max-w-6xl h-[300px] md:h-[500px] lg:h-[700px] relative">
           <MotionImg
             src="/LOGO-WhiteArrowV8.svg"
@@ -80,7 +80,7 @@ export default function Home() {
           />
         </div>
 
-        {/* ✅ 標語文字：同步呼吸 */}
+        {/* ✅ 同步呼吸的標語 */}
         <motion.p
           className="text-sm md:text-lg tracking-widest font-light text-center"
           animate={breathing}
