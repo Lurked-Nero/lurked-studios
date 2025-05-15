@@ -62,27 +62,25 @@ export default function Home() {
         transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
       >
         <motion.div
-          className="relative w-[80vw] max-w-4xl flex flex-col items-center"
+          className="relative w-full max-w-md md:max-w-4xl h-[200px] md:h-[300px] flex flex-col items-center"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1.5 }}
         >
-          <div className="relative w-full h-[300px]">
-            <MotionImg
-              src="/LOGO-WhiteArrowV8.svg"
-              alt="White Arrow Logo"
-              className="absolute top-0 left-0 w-full h-full object-contain scale-[3] origin-center"
-              animate={{ opacity: isWhite ? 1 : 0 }}
-              transition={moonTransition}
-            />
-            <MotionImg
-              src="/LOGO-YellowArrowV8.svg"
-              alt="Yellow Arrow Logo"
-              className="absolute top-0 left-0 w-full h-full object-contain scale-[3] origin-center"
-              animate={{ opacity: isWhite ? 0 : 1 }}
-              transition={moonTransition}
-            />
-          </div>
+          <MotionImg
+            src="/LOGO-WhiteArrowV8.svg"
+            alt="White Arrow Logo"
+            className="absolute top-0 left-0 w-full h-full object-contain"
+            animate={{ opacity: isWhite ? 1 : 0 }}
+            transition={moonTransition}
+          />
+          <MotionImg
+            src="/LOGO-YellowArrowV8.svg"
+            alt="Yellow Arrow Logo"
+            className="absolute top-0 left-0 w-full h-full object-contain"
+            animate={{ opacity: isWhite ? 0 : 1 }}
+            transition={moonTransition}
+          />
         </motion.div>
       </motion.div>
 
