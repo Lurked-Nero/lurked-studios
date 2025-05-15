@@ -1,7 +1,14 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, forwardRef } from 'react';
 import { motion } from 'framer-motion';
+
+// ✅ 正確包裝 motion.img，支援 src、alt 等 HTML 屬性
+const MotionImg = motion(
+  forwardRef<HTMLImageElement, React.ImgHTMLAttributes<HTMLImageElement>>(
+    (props, ref) => <img ref={ref} {...props} />
+  )
+);
 
 export default function Home() {
   const [isMounted, setIsMounted] = useState(false);
@@ -28,14 +35,14 @@ export default function Home() {
         transition={moonTransition}
         className="absolute top-8 right-8 w-24 h-24 md:w-32 md:h-32"
       >
-        <motion.img
+        <MotionImg
           src="/LOGO-WhiteMoonV11.png"
           alt="White Moon"
           className="w-full h-full object-contain absolute"
           animate={{ opacity: isWhite ? 1 : 0 }}
           transition={moonTransition}
         />
-        <motion.img
+        <MotionImg
           src="/LOGO-YellowMoonV11.png"
           alt="Yellow Moon"
           className="w-full h-full object-contain absolute"
@@ -44,25 +51,24 @@ export default function Home() {
         />
       </motion.div>
 
-      {/* 中央箭頭 Logo + 文字，垂直排 */}
+      {/* 中央箭頭 Logo + 文字 */}
       <motion.div
         className="flex flex-col items-center text-center mt-32 px-4 gap-6"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1.5 }}
       >
-        {/* ✅ 單一圖，正常排版 */}
-        <motion.img
+        {/* ✅ 單一箭頭圖顯示，無絕對定位，實際佔位 */}
+        <MotionImg
           key={isWhite ? 'white' : 'yellow'}
           src={isWhite ? '/LOGO-WhiteArrowV8.svg' : '/LOGO-YellowArrowV8.svg'}
           alt="Arrow Logo"
           className="w-[80vw] max-w-4xl h-[300px] object-contain transition-opacity duration-1000"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
         />
 
-        {/* ✅ 圖片下方的標語 */}
+        {/* ✅ 文字穩定貼在圖下方 */}
         <motion.p
           className="text-sm md:text-lg tracking-widest font-light text-center"
           animate={{ opacity: [0.4, 1, 0.4] }}
