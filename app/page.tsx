@@ -55,9 +55,9 @@ export default function Home() {
         />
       </motion.div>
 
-      {/* 中央箭頭 Logo + 標語緊貼 */}
+      {/* 中央箭頭 Logo + 標語固定在圖下方 */}
       <motion.div
-        className="flex flex-col items-center text-center gap-4 mt-32 px-4"
+        className="flex flex-col items-center text-center mt-32 px-4"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1.5 }}
@@ -77,16 +77,16 @@ export default function Home() {
             animate={{ opacity: isWhite ? 0 : 1 }}
             transition={moonTransition}
           />
-        </div>
 
-        {/* ✅ 緊貼箭頭下方的標語 */}
-        <motion.p
-          className="text-lg md:text-xl tracking-widest font-light"
-          animate={{ opacity: [0.4, 1, 0.4] }}
-          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-        >
-          What you seek is hidden.
-        </motion.p>
+          {/* ✅ 標語緊貼圖下緣一點點 */}
+          <motion.p
+            className="absolute bottom-[-2rem] left-1/2 -translate-x-1/2 text-sm md:text-lg tracking-widest font-light text-center"
+            animate={{ opacity: [0.4, 1, 0.4] }}
+            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+          >
+            What you seek is hidden.
+          </motion.p>
+        </div>
       </motion.div>
     </main>
   );
