@@ -12,6 +12,7 @@ const MotionImg = motion(
 export default function Home() {
   const [isMounted, setIsMounted] = useState(false);
   const [logoSrc, setLogoSrc] = useState("/LOGO-WhiteMoonV11.png");
+  const [arrowSrc, setArrowSrc] = useState("/LOGO-WhiteArrowV8.svg");
 
   useEffect(() => {
     setIsMounted(true);
@@ -20,6 +21,11 @@ export default function Home() {
         prev === "/LOGO-WhiteMoonV11.png"
           ? "/LOGO-YellowMoonV11.png"
           : "/LOGO-WhiteMoonV11.png"
+      );
+      setArrowSrc(prev =>
+        prev === "/LOGO-WhiteArrowV8.svg"
+          ? "/LOGO-YellowArrowV8.svg"
+          : "/LOGO-WhiteArrowV8.svg"
       );
     }, 6000);
     return () => clearInterval(interval);
@@ -62,14 +68,12 @@ export default function Home() {
         animate={{ opacity: 1 }}
         transition={{ duration: 1.5 }}
       >
-        {/* ✅ AnimatePresence 控制圖片 fade in/out */}
         <div className="w-[80vw] max-w-4xl h-[300px] relative overflow-hidden">
           <AnimatePresence mode="wait">
             <MotionImg
-              key={logoSrc}
-              src={isWhite ? "/LOGO-WhiteArrowV8.svg" : "/LOGO-YellowArrowV8.svg"}
+              key={arrowSrc}
+              src={arrowSrc}
               alt="Arrow Logo"
-              initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 1.2 }}
@@ -78,7 +82,7 @@ export default function Home() {
           </AnimatePresence>
         </div>
 
-        {/* ✅ 貼在圖底下，不再飄 */}
+        {/* ✅ 貼圖下方文字 */}
         <motion.p
           className="text-sm md:text-lg tracking-widest font-light mt-4"
           animate={{ opacity: [0.4, 1, 0.4] }}
