@@ -57,33 +57,35 @@ export default function Home() {
 
       {/* 中央箭頭 Logo + 標語 */}
       <motion.div
-        className="flex flex-col items-center text-center mt-32 px-4 gap-6"
+        className="flex flex-col items-center text-center mt-32 px-4"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1.5 }}
       >
-        <div className="w-[80vw] max-w-4xl h-[300px] relative flex justify-center items-center">
-          {/* 白箭頭 */}
+        {/* ⛔ 原本 scale 放大但容器沒撐起來，會讓文字被擠進去 */}
+        {/* ✅ 改為固定高度 + padding-bottom 補償 scale 擴張高度 */}
+        <div className="w-[80vw] max-w-4xl relative pb-[120px]">
+          {/* 白圖 */}
           <MotionImg
             src="/LOGO-WhiteArrowV8.svg"
             alt="White Arrow"
-            className="w-full h-full object-contain scale-100 md:scale-[3] origin-center"
+            className="absolute top-0 left-0 w-full h-full object-contain scale-100 md:scale-[3] origin-center"
             animate={{ opacity: isWhite ? 1 : 0 }}
             transition={moonTransition}
           />
-          {/* 黃箭頭 */}
+          {/* 黃圖 */}
           <MotionImg
             src="/LOGO-YellowArrowV8.svg"
             alt="Yellow Arrow"
-            className="absolute w-full h-full object-contain scale-100 md:scale-[3] origin-center"
+            className="absolute top-0 left-0 w-full h-full object-contain scale-100 md:scale-[3] origin-center"
             animate={{ opacity: isWhite ? 0 : 1 }}
             transition={moonTransition}
           />
         </div>
 
-        {/* 貼在箭頭下方的標語 */}
+        {/* ✅ 這時候才會在圖下方一點點，不會「在圖裡」 */}
         <motion.p
-          className="text-sm md:text-lg tracking-widest font-light text-center"
+          className="mt-4 text-sm md:text-lg tracking-widest font-light text-center"
           animate={{ opacity: [0.4, 1, 0.4] }}
           transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
         >
