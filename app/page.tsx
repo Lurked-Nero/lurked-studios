@@ -57,20 +57,21 @@ export default function Home() {
 
       {/* 中央箭頭 Logo + 標語 */}
       <motion.div
-        className="flex flex-col items-center text-center mt-32 px-4 gap-4"
+        className="flex flex-col items-center text-center mt-32 px-4 gap-6"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1.5 }}
       >
-        <div className="w-[80vw] max-w-4xl h-[300px] relative">
-          {/* 用交錯疊圖方式交替 opacity */}
+        <div className="w-[80vw] max-w-4xl h-[300px] relative flex justify-center items-center">
+          {/* 白箭頭 */}
           <MotionImg
             src="/LOGO-WhiteArrowV8.svg"
             alt="White Arrow"
-            className="absolute w-full h-full object-contain scale-100 md:scale-[3] origin-center"
+            className="w-full h-full object-contain scale-100 md:scale-[3] origin-center"
             animate={{ opacity: isWhite ? 1 : 0 }}
             transition={moonTransition}
           />
+          {/* 黃箭頭 */}
           <MotionImg
             src="/LOGO-YellowArrowV8.svg"
             alt="Yellow Arrow"
@@ -80,9 +81,9 @@ export default function Home() {
           />
         </div>
 
-        {/* 貼圖下方的標語 */}
+        {/* 貼在箭頭下方的標語 */}
         <motion.p
-          className="text-sm md:text-lg tracking-widest font-light mt-4"
+          className="text-sm md:text-lg tracking-widest font-light text-center"
           animate={{ opacity: [0.4, 1, 0.4] }}
           transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
         >
