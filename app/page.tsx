@@ -55,7 +55,7 @@ export default function Home() {
         />
       </motion.div>
 
-      {/* 中央箭頭 Logo（響應式 scale 控制） */}
+      {/* 中央箭頭 Logo + 標語合併區塊 */}
       <motion.div
         className="flex flex-col items-center text-center"
         animate={{ opacity: [0.4, 1, 0.4] }}
@@ -83,17 +83,17 @@ export default function Home() {
               transition={moonTransition}
             />
           </div>
+
+          {/* ✅ 標語放在中央箭頭 Logo 下方 */}
+          <motion.p
+            className="mt-6 text-lg md:text-xl tracking-widest font-light text-center"
+            animate={{ opacity: [0.4, 1, 0.4] }}
+            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+          >
+            What you seek is hidden.
+          </motion.p>
         </motion.div>
       </motion.div>
-
-      {/* ✅ 底部標語 */}
-      <motion.p
-        className="mb-8 text-lg md:text-xl tracking-widest font-light text-center"
-        animate={{ opacity: [0.4, 1, 0.4] }}
-        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-      >
-        What you seek is hidden.
-      </motion.p>
     </main>
   );
 }
