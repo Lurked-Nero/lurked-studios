@@ -55,13 +55,14 @@ export default function Home() {
         />
       </motion.div>
 
-      {/* 中央箭頭 Logo + 標語固定在圖下方 */}
+      {/* 中央箭頭 + 標語，平行排列 */}
       <motion.div
-        className="flex flex-col items-center text-center mt-32 px-4"
+        className="flex flex-col items-center text-center mt-32 px-4 gap-4"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1.5 }}
       >
+        {/* 圖片區域 */}
         <div className="relative w-[80vw] max-w-4xl h-[300px]">
           <MotionImg
             src="/LOGO-WhiteArrowV8.svg"
@@ -77,16 +78,16 @@ export default function Home() {
             animate={{ opacity: isWhite ? 0 : 1 }}
             transition={moonTransition}
           />
-
-          {/* ✅ 標語緊貼圖下緣一點點 */}
-          <motion.p
-            className="absolute bottom-[-2rem] left-1/2 -translate-x-1/2 text-sm md:text-lg tracking-widest font-light text-center"
-            animate={{ opacity: [0.4, 1, 0.4] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-          >
-            What you seek is hidden.
-          </motion.p>
         </div>
+
+        {/* ✅ 放在圖外面：自然在圖下方 */}
+        <motion.p
+          className="text-sm md:text-lg tracking-widest font-light"
+          animate={{ opacity: [0.4, 1, 0.4] }}
+          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+        >
+          What you seek is hidden.
+        </motion.p>
       </motion.div>
     </main>
   );
