@@ -31,7 +31,7 @@ export default function Home() {
   if (!isMounted) return null;
 
   return (
-    <main className="flex flex-col justify-between items-center min-h-screen bg-black text-white overflow-hidden relative">
+    <main className="flex flex-col items-center min-h-screen bg-black text-white overflow-hidden relative">
       {/* 右上角彎月 Logo */}
       <motion.div
         initial={{ opacity: 0, y: 40 }}
@@ -55,9 +55,9 @@ export default function Home() {
         />
       </motion.div>
 
-      {/* 中央箭頭 Logo + 標語區塊 */}
+      {/* 中央箭頭 Logo + 標語緊貼 */}
       <motion.div
-        className="flex flex-col items-center text-center gap-6"
+        className="flex flex-col items-center text-center gap-4 mt-32 px-4"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1.5 }}
@@ -79,9 +79,9 @@ export default function Home() {
           />
         </div>
 
-        {/* 標語：貼近箭頭下方 */}
+        {/* ✅ 緊貼箭頭下方的標語 */}
         <motion.p
-          className="text-lg md:text-xl tracking-widest font-light text-center"
+          className="text-lg md:text-xl tracking-widest font-light"
           animate={{ opacity: [0.4, 1, 0.4] }}
           transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
         >
