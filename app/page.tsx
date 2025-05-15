@@ -63,7 +63,7 @@ export default function Home() {
 
       {/* ✅ 中央箭頭區：responsive 尺寸 + 呼吸動畫 + 切換 */}
       <motion.div className="flex flex-col items-center text-center mt-32 px-4 gap-6">
-        <div className="w-[80vw] max-w-6xl h-[300px] md:h-[550px] lg:h-[900px] relative">
+        <div className="w-[80vw] max-w-6xl h-[300px] md:h-[500px] lg:h-[700px] relative">
           <MotionImg
             src="/LOGO-WhiteArrowV8.svg"
             alt="White Arrow"
