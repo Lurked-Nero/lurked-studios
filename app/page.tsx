@@ -3,7 +3,7 @@
 import { useState, useEffect, forwardRef } from 'react';
 import { motion } from 'framer-motion';
 
-// ✅ 正確包裝 motion.img，支援 src、alt 等 HTML 屬性
+// ✅ 支援 src 屬性的 motion.img
 const MotionImg = motion(
   forwardRef<HTMLImageElement, React.ImgHTMLAttributes<HTMLImageElement>>(
     (props, ref) => <img ref={ref} {...props} />
@@ -25,60 +25,60 @@ export default function Home() {
   if (!isMounted) return null;
 
   const moonTransition = { duration: 1.2, ease: 'easeInOut' };
+  const breathingAnimation = {
+    opacity: [0.4, 1, 0.4],
+  };
+  const breathingTransition = {
+    duration: 4,
+    repeat: Infinity,
+    ease: 'easeInOut',
+  };
 
   return (
     <main className="flex flex-col items-center min-h-screen bg-black text-white overflow-hidden relative">
-      {/* 右上角彎月 Logo */}
+      {/* ✅ 右上角彎月 Logo（呼吸） */}
       <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={moonTransition}
         className="absolute top-8 right-8 w-24 h-24 md:w-32 md:h-32"
+        animate={breathingAnimation}
+        transition={breathingTransition}
       >
         <MotionImg
           src="/LOGO-WhiteMoonV11.png"
           alt="White Moon"
-          className="w-full h-full object-contain absolute"
-          animate={{ opacity: isWhite ? 1 : 0 }}
-          transition={moonTransition}
+          className="absolute w-full h-full object-contain"
+          style={{ opacity: isWhite ? 1 : 0 }}
         />
         <MotionImg
           src="/LOGO-YellowMoonV11.png"
           alt="Yellow Moon"
-          className="w-full h-full object-contain absolute"
-          animate={{ opacity: isWhite ? 0 : 1 }}
-          transition={moonTransition}
+          className="absolute w-full h-full object-contain"
+          style={{ opacity: isWhite ? 0 : 1 }}
         />
       </motion.div>
 
-      {/* 中央箭頭 Logo + 文字 */}
+      {/* 中央箭頭 Logo + 呼吸動畫 + 標語 */}
       <motion.div
         className="flex flex-col items-center text-center mt-32 px-4 gap-6"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1.5 }}
+        animate={breathingAnimation}
+        transition={breathingTransition}
       >
-        {/* ✅ 單一箭頭圖顯示，無絕對定位，實際佔位 */}
-        <MotionImg
-          key={isWhite ? 'white' : 'yellow'}
-          src={isWhite ? '/LOGO-WhiteArrowV8.svg' : '/LOGO-YellowArrowV8.svg'}
-          alt="Arrow Logo"
-          className="w-[80vw] max-w-4xl h-[300px] object-contain transition-opacity duration-1000"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-        />
+        <div className="w-[80vw] max-w-4xl h-[300px] relative">
+          <MotionImg
+            src="/LOGO-WhiteArrowV8.svg"
+            alt="White Arrow"
+            className="absolute top-0 left-0 w-full h-full object-contain"
+            style={{ opacity: isWhite ? 1 : 0 }}
+          />
+          <MotionImg
+            src="/LOGO-YellowArrowV8.svg"
+            alt="Yellow Arrow"
+            className="absolute top-0 left-0 w-full h-full object-contain"
+            style={{ opacity: isWhite ? 0 : 1 }}
+          />
+        </div>
 
-        {/* ✅ 文字穩定貼在圖下方 */}
-        <motion.p
-          className="text-sm md:text-lg tracking-widest font-light text-center"
-          animate={{ opacity: [0.4, 1, 0.4] }}
-          transition={{
-            duration: 4,
-            repeat: Infinity,
-            ease: 'easeInOut',
-            delay: 0.5,
-          }}
-        >
+        {/* ✅ 呼吸動畫同步的標語 */}
+        <motion.p className="text-sm md:text-lg tracking-widest font-light text-center">
           What you seek is hidden.
         </motion.p>
       </motion.div>
