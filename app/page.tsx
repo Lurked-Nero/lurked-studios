@@ -46,14 +46,14 @@ export default function Home() {
         className="absolute top-8 right-8 w-24 h-24 md:w-32 md:h-32"
       >
         <MotionImg
-          src="/LOGO-WhiteMoonV14.png"
+          src="/LOGO-WhiteMoonV15.png"
           alt="White Moon"
           className="absolute w-full h-full object-contain"
           animate={isWhite ? breathing : staticHide}
           transition={breathTransition}
         />
         <MotionImg
-          src="/LOGO-YellowMoonV14.png"
+          src="/LOGO-YellowMoonV15.png"
           alt="Yellow Moon"
           className="absolute w-full h-full object-contain"
           animate={!isWhite ? breathing : staticHide}
