@@ -6,11 +6,11 @@ export const metadata = {
   themeColor: '#000000',
   icons: {
     icon: [
-      { rel: 'icon', url: '/favicon_v4.ico?v=4' },
-      { rel: 'icon', url: '/favicon_v4-32x32.png?v=4', sizes: '32x32', type: 'image/png' },
-      { rel: 'icon', url: '/favicon_v4-16x16.png?v=4', sizes: '16x16', type: 'image/png' },
+      { rel: 'icon', url: '/favicon_v5.ico?v=5' },
+      { rel: 'icon', url: '/favicon_v5-32x32.png?v=5', sizes: '32x32', type: 'image/png' },
+      { rel: 'icon', url: '/favicon_v5-16x16.png?v=5', sizes: '16x16', type: 'image/png' },
     ],
-    apple: '/favicon_v4-180x180.png?v=4',
+    apple: '/favicon_v5-180x180.png?v=5',
   },
 };
 
