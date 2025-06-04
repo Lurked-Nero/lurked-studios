@@ -1,22 +1,24 @@
 import "../styles/globals.css";
+import Head from 'next/head';
 
 export const metadata = {
   title: 'Lurked Studios',
   description: 'What you seek is hidden.',
-  icons: {
-    icon: [
-      { rel: 'icon', url: '/favicon_v2.ico' },
-      { rel: 'icon', url: '/favicon_v2-32x32.png', sizes: '32x32', type: 'image/png' },
-      { rel: 'icon', url: '/favicon_v2-16x16.png', sizes: '16x16', type: 'image/png' },
-    ],
-    apple: '/favicon_v2-180x180.png', // 如果你之後要加 iOS icon，可放這
-  },
-  themeColor: '#000000', // 瀏覽器主題色
+  themeColor: '#000000',
 };
 
-export default function RootLayout({ children }) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
+      <Head>
+        {/* 多平台 favicon 設定 */}
+        <link rel="icon" href="/favicon_v4.ico" />
+        <link rel="shortcut icon" href="/favicon_v4.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon_v4-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon_v4-16x16.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/favicon_v4-180x180.png" />
+        <meta name="theme-color" content="#000000" />
+      </Head>
       <body className="bg-black text-white">{children}</body>
     </html>
   );
