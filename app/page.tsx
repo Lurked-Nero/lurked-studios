@@ -65,14 +65,14 @@ export default function Home() {
       <motion.div className="flex flex-col items-center text-center px-4 gap-6 translate-y-[-20%] md:translate-y-[-25%] lg:translate-y-[-30%]">
         <div className="w-[80vw] max-w-6xl h-[300px] md:h-[500px] lg:h-[700px] relative">
           <MotionImg
-            src="/LOGO-WhiteArrowV8.svg"
+            src="/LOGO-WhiteArrowV9.svg"
             alt="White Arrow"
             className="absolute top-0 left-0 w-full h-full object-contain"
             animate={isWhite ? breathing : staticHide}
             transition={breathTransition}
           />
           <MotionImg
-            src="/LOGO-YellowArrowV8.svg"
+            src="/LOGO-YellowArrowV9.svg"
             alt="Yellow Arrow"
             className="absolute top-0 left-0 w-full h-full object-contain"
             animate={!isWhite ? breathing : staticHide}
